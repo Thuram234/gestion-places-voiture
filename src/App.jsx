@@ -39,7 +39,7 @@ export default function App() {
   return (
     <main className="app">
       <header className="app__header">
-        <h1>Gestion des places</h1>
+        <h1>Gestion des places (V4)</h1>
         <p>Mercedes-Benz Sprinter · voyage d'étude</p>
       </header>
 
