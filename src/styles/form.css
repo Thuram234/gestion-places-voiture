@@ -1,0 +1,42 @@
+/* Panneau */
+.panel__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.panel__head h2 { margin: 0; }
+.badge { font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 99px; }
+.badge--free { background: var(--free-bg); color: var(--free); }
+.badge--occupied { background: var(--occupied-bg); color: var(--occupied); }
+
+/* Fiche étudiant */
+.details { margin: 0; }
+.details dt { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 12px; }
+.details dd { margin: 2px 0 0; font-weight: 500; word-break: break-word; }
+
+/* Formulaire */
+.form { display: flex; flex-direction: column; gap: 14px; }
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field label { font-size: 0.85rem; font-weight: 600; }
+.field input { font: inherit; padding: 9px 11px; border: 1.5px solid var(--border); border-radius: 8px; background: #fff; color: var(--text); }
+.field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
+.field input[aria-invalid="true"] { border-color: #dc2626; }
+.field__error { color: #dc2626; font-size: 0.8rem; }
+.form__actions { display: flex; gap: 8px; margin-top: 20px;}
+
+/* Boutons */
+.btn { font: inherit; font-weight: 600; padding: 9px 14px; border-radius: 8px; border: 1.5px solid var(--border); background: #fff; color: var(--text); cursor: pointer; }
+.btn:hover { background: #f9fafb; }
+.btn--primary { background: var(--accent); border-color: var(--accent); color: #fff; flex: 1; }
+.btn--primary:hover { background: #1d4ed8; }
+.btn--danger {
+	background: #ff4141;
+	color : #fff;
+	margin-left: 10px;
+}
+.btn--danger:hover {
+	background-color: #dc2626;
+}
+
+/* Toast */
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; color: #fff; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18); max-width: calc(100vw - 32px); animation: toast-in 0.2s ease; z-index: 50; }
+.toast--success { background: #15803d; }
+.toast--error { background: #b91c1c; }
+.toast__close { background: none; border: none; color: inherit; font-size: 1.2rem; cursor: pointer; line-height: 1; }
+@keyframes toast-in { from { opacity: 0; transform: translate(-50%, 8px); } to { opacity: 1; transform: translate(-50%, 0); } }

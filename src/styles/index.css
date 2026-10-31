@@ -1,0 +1,69 @@
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --free: #16a34a;
+  --free-bg: #ecfdf3;
+  --occupied: #2563eb;
+  --occupied-bg: #eff6ff;
+  --accent: #2563eb;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app { max-width: 960px; margin: 0 auto; padding: 20px 16px 40px; }
+.app__header h1 { margin: 0; font-size: 1.5rem; }
+.app__header p { margin: 4px 0 16px; color: var(--muted); font-size: 0.9rem; }
+
+.app__content { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 20px; align-items: start; margin-top: 16px; }
+
+/* Compteur */
+.counter { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; }
+.counter__numbers { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.counter__numbers strong { font-size: 1.4rem; }
+.counter__numbers span { color: var(--muted); font-size: 0.9rem; }
+.counter__free { margin-left: auto; color: var(--free) !important; font-weight: 600; }
+.counter__bar { height: 6px; background: var(--border); border-radius: 99px; margin-top: 10px; overflow: hidden; }
+.counter__fill { height: 100%; background: var(--occupied); transition: width 0.3s ease; }
+
+/* Plan du véhicule */
+.car { background: var(--surface); border: 2px solid var(--border); border-radius: 28px 28px 16px 16px; padding: 14px 16px 18px; }
+.car__front-label { text-align: center; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.car__row { display: grid; grid-template-columns: 1fr 1fr 28px 1fr 1fr; gap: 8px; margin-bottom: 8px; position: relative; }
+.car__aisle { background: repeating-linear-gradient(to bottom, transparent 0 6px, var(--border) 6px 8px); width: 2px; justify-self: center; }
+.car__back-tag { position: absolute; left: 50%; bottom: -16px; transform: translateX(-50%); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.car__row:last-child { margin-bottom: 14px; }
+
+.driver { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 8px 4px; border: 1px dashed var(--border); border-radius: 10px; color: var(--muted); font-size: 0.7rem; background: #fafafa; }
+
+/* Sièges */
+.seat { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 58px; padding: 6px 4px; border-radius: 10px; border: 1.5px solid; cursor: pointer; font: inherit; transition: transform 0.12s ease, box-shadow 0.12s ease; min-width: 0; }
+.seat:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+.seat:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.seat--free { background: var(--free-bg); border-color: #bbf7d0; color: var(--free); }
+.seat--occupied { background: var(--occupied-bg); border-color: #bfdbfe; color: var(--occupied); }
+.seat--selected { box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35); border-color: var(--accent); }
+.seat__number { font-weight: 700; font-size: 1rem; }
+.seat__name { font-size: 0.68rem; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Panneau */
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+.panel h2 { margin: 0 0 8px; font-size: 1.1rem; }
+.panel__hint { color: var(--muted); margin: 0; }
+
+/* Mobile */
+@media (max-width: 720px) {
+  .app__content { grid-template-columns: 1fr; }
+  .seat { min-height: 52px; }
+  .seat__name { font-size: 0.6rem; }
+}

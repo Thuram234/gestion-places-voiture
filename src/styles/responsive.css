@@ -1,0 +1,29 @@
+/* Bouton fermer : visible uniquement sur mobile */
+.panel__close { display: none; margin-left: 8px; background: none; border: none; font-size: 1.6rem; line-height: 1; color: var(--muted); cursor: pointer; }
+.panel__head h2 { margin-right: auto; }
+
+/* Toast et boîte de confirmation toujours au-dessus du panneau */
+.toast { z-index: 150; }
+
+@media (max-width: 720px) {
+  .app { padding: 14px 10px 90px; }
+  .car { padding: 12px 10px 16px; }
+  .car__row { gap: 6px; grid-template-columns: 1fr 1fr 18px 1fr 1fr; }
+
+  /* Pas de panneau vide sous le plan */
+  .panel--empty { display: none; }
+
+  /* Panneau en "bottom sheet" quand une place est sélectionnée */
+  .panel--active {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    max-height: 85vh; overflow-y: auto;
+    border-radius: 18px 18px 0 0; border-bottom: none;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 0 0 100vmax rgba(17, 24, 39, 0.4); /* fond assombri */
+    animation: sheet-in 0.2s ease;
+  }
+  .panel__close { display: block; }
+  .field input { font-size: 16px; } /* évite le zoom automatique sur iOS */
+}
+
+@keyframes sheet-in { from { transform: translateY(24px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
