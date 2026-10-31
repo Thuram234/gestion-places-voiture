@@ -8,7 +8,8 @@ const normalizePhone = (v) => {
   if (digits.startsWith("+261")) digits = "0" + digits.slice(4);
   return digits;
 };
-const PHONE_REGEX = /^03\d{8}$/;
+
+//const PHONE_REGEX = /^03\d{8}$/;
 
 /**
  * Valide un étudiant.
@@ -17,7 +18,7 @@ const PHONE_REGEX = /^03\d{8}$/;
  * @param {number|null} currentSeatId  place en cours de modification (ignorée pour le contrôle des doublons)
  * @returns {{ errors: object, values: object }}  values = données nettoyées
  */
-export function validateStudent(data, seats, currentSeatId = null) {
+export function validateStudent(data /*, seats, currentSeatId = null*/) {
   const values = {
     matricule: clean(data.matricule),
     nomPrenom: clean(data.nomPrenom),
@@ -25,6 +26,7 @@ export function validateStudent(data, seats, currentSeatId = null) {
   };
   const errors = {};
 
+  /*  
   if (!values.matricule) {
     errors.matricule = "Le matricule est obligatoire.";
   } else {
@@ -36,6 +38,7 @@ export function validateStudent(data, seats, currentSeatId = null) {
     );
     if (duplicate) errors.matricule = "Ce matricule est déjà enregistré.";
   }
+  */
 
   if (!values.nomPrenom) {
     errors.nomPrenom = "Le nom et prénom sont obligatoires.";
@@ -43,11 +46,13 @@ export function validateStudent(data, seats, currentSeatId = null) {
     errors.nomPrenom = "Saisissez au moins 2 caractères.";
   }
 
+  /*
   if (!values.telephone) {
     errors.telephone = "Le numéro de téléphone est obligatoire.";
   } else if (!PHONE_REGEX.test(values.telephone)) {
     errors.telephone = "Format attendu : 03X XX XXX XX (10 chiffres).";
   }
+  */
 
   return { errors, values };
 }
